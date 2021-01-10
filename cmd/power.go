@@ -14,10 +14,24 @@
    limitations under the License.
 */
 
-package main
+package cmd
 
-import "github.com/jmckind/hiloctl/cmd"
+import (
+	"fmt"
 
-func main() {
-	cmd.Execute()
+	"github.com/spf13/cobra"
+)
+
+// powerCmd represents the power command
+var powerCmd = &cobra.Command{
+	Use:   "power",
+	Short: "Toggle the power on/off",
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Println("power called")
+	},
+}
+
+// init will initialize the power command
+func init() {
+	rootCmd.AddCommand(powerCmd)
 }

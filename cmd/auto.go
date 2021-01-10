@@ -14,10 +14,24 @@
    limitations under the License.
 */
 
-package main
+package cmd
 
-import "github.com/jmckind/hiloctl/cmd"
+import (
+	"fmt"
 
-func main() {
-	cmd.Execute()
+	"github.com/spf13/cobra"
+)
+
+// autoCmd represents the auto command
+var autoCmd = &cobra.Command{
+	Use:   "auto",
+	Short: "Toggle auto mode on/off",
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Println("auto called")
+	},
+}
+
+// init will initialize the auto command
+func init() {
+	rootCmd.AddCommand(autoCmd)
 }
